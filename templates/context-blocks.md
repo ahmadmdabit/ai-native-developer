@@ -1,5 +1,3 @@
-### 📄 templates/context-blocks.md
-
 # 🧱 Context Blocks
 
 Reusable context snippets to feed into AI agents for better grounding, accuracy, and consistency.
@@ -17,7 +15,7 @@ Reusable context snippets to feed into AI agents for better grounding, accuracy,
   "testing": ["Jest", "React Testing Library"],
   "deployment": "GitHub Pages"
 }
-````
+```
 
 ---
 
@@ -28,7 +26,8 @@ Reusable context snippets to feed into AI agents for better grounding, accuracy,
 - Use PascalCase for components and classes
 - Prefer arrow functions over function declarations
 - Use `const` and `let` (no `var`)
-- Always include PropTypes or TypeScript interfaces
+- Always include TypeScript interfaces for props and state
+- Avoid `any` types; use specific types or generics
 ```
 
 ---
@@ -58,6 +57,7 @@ GET /api/users
 - Integration tests for API endpoints
 - End-to-end tests for critical user flows
 - 90%+ test coverage required
+- Mock external services using MSW or Jest mocks
 ```
 
 ---
@@ -67,8 +67,9 @@ GET /api/users
 ```markdown
 - Sanitize all user inputs
 - Use HTTPS for all endpoints
-- Store secrets in environment variables
+- Store secrets in environment variables (never in code)
 - Use JWTs with expiration and refresh tokens
+- Validate all API payloads against a schema (e.g., Zod)
 ```
 
 ---

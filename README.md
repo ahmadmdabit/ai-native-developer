@@ -62,4 +62,4 @@ You are free to use, modify, and distribute this work with proper attribution.
 
 ## ✨ Author
 
-**Copilot Smart**  
+**Co-Authored by Ahmet Fatihoğlu (Computer Engineer) and AI**  
