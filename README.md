@@ -30,31 +30,31 @@ It covers the full lifecycle of AI-augmented development:
 ## 📚 Table of Contents
 
 ### Part I: Foundations of AI-Augmented Development
-1. [Introduction: Why Software Development Needs a New Playbook](chapters/01-introduction.md)
-2. [The Missing Guide to Using AI Agents](chapters/02-ai-agents.md)
-3. [The Missing Guide to Prompt Engineering](chapters/03-prompt-engineering.md)
-4. [The Missing Guide to Context Engineering](chapters/04-context-engineering.md)
+1. [Introduction: Why Software Development Needs a New Playbook](01-introduction-en.md)
+2. [The Missing Guide to Using AI Agents](02-ai-agents-en.md)
+3. [The Missing Guide to Prompt Engineering](03-prompt-engineering-en.md)
+4. [The Missing Guide to Context Engineering](04-context-engineering-en.md)
 
 ### Part II: Building Smarter Workflows
-5. [The Missing Guide to Evaluation & Validation](chapters/05-evaluation-validation.md)
-6. [The Missing Guide to Iteration & Feedback Loops](chapters/06-feedback-loops.md)
-7. [The Missing Guide to Knowledge Management](chapters/07-knowledge-management.md)
+5. [The Missing Guide to Evaluation & Validation](05-evaluation-validation-en.md)
+6. [The Missing Guide to Iteration & Feedback Loops](06-feedback-loops-en.md)
+7. [The Missing Guide to Knowledge Management](07-knowledge-management-en.md)
 
 ### Part III: Scaling with Intelligence
-8. [The Missing Guide to Ethics & Governance](chapters/08-ethics-governance.md)
-9. [The Missing Guide to Multi-Agent Collaboration](chapters/09-multi-agent-collaboration.md)
-10. [The Missing Guide to Metrics & ROI](chapters/10-metrics-roi.md)
-11. [The Missing Guide to Future-Proofing AI Workflows](chapters/11-future-proofing.md)
+8. [The Missing Guide to Ethics & Governance](08-ethics-governance-en.md)
+9. [The Missing Guide to Multi-Agent Collaboration](09-multi-agent-collaboration-en.md)
+10. [The Missing Guide to Metrics & ROI](10-metrics-roi-en.md)
+11. [The Missing Guide to Future-Proofing AI Workflows](11-future-proofing-en.md)
 
 ### Part IV: The Road Ahead
-12. [From Developer to AI Orchestrator](chapters/12-ai-orchestrator.md)
-13. [Building Your AI-Ready Stack](chapters/13-ai-ready-stack.md)
-14. [Conclusion: Designing for the Next Decade](chapters/14-conclusion.md)
+12. [From Developer to AI Orchestrator](12-ai-orchestrator-en.md)
+13. [Building Your AI-Ready Stack](13-ai-ready-stack-en.md)
+14. [Conclusion: Designing for the Next Decade](14-conclusion-en.md)
 
 ### Appendices & Resources
-*   [**The AI-Native Glossary**](chapters/glossary.md) 🆕
-*   [Template: Context Blocks](templates/context-blocks.md)
-*   [Template: Prompt Library](templates/prompt-library.md)
+*   [**The AI-Native Glossary**](glossary-en.md) 🆕
+*   [Template: Context Blocks](context-blocks-en.md)
+*   [Template: Prompt Library](prompt-library-en.md)
 
 ---
 
