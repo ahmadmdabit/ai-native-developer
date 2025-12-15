@@ -17,6 +17,37 @@ By the end of this chapter, you will be able to:
 Together, they answer:
 > “Are we building the right thing — and building it the right way?”
 
+### 📊 Visualizing the Governance Stack
+
+Governance isn't a single meeting; it's a layered defense system.
+
+```mermaid
+graph TD
+    subgraph OrgLayer ["Organizational Layer"]
+        A[Ethics Board] --> B[Risk Policy]
+    end
+
+    subgraph ProcessLayer ["Process Layer"]
+        B --> C[Secure SDLC]
+        C --> D[Incident Response]
+    end
+
+    subgraph TeamLayer ["Team Layer"]
+        D --> E[Code Reviews]
+        E --> F[Prompt Audits]
+    end
+
+    subgraph ProductLayer ["Product Layer"]
+        F --> G[User Feedback]
+        G --> H[Explainability Features]
+    end
+
+    style OrgLayer fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+    style ProcessLayer fill:#fff9c4,stroke:#fbc02d,stroke-width:2px
+    style TeamLayer fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px
+    style ProductLayer fill:#f8bbd0,stroke:#c2185b,stroke-width:2px
+```
+
 ---
 
 ## 2. 🧩 Why It Matters (Especially with AI)

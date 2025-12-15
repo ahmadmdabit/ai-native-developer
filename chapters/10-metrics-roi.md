@@ -2,10 +2,10 @@
 
 ### 🎯 Learning Objectives
 By the end of this chapter, you will be able to:
-*   Distinguish between traditional DORA metrics and **AI-specific metrics** (e.g., Prompt Success Rate).
-*   Calculate the **Return on Investment (ROI)** of your AI tools using a concrete formula.
-*   Identify and avoid "Vanity Metrics" (like Lines of Code) that AI renders obsolete.
-*   Navigate the trade-offs between quantitative data and developer morale.
+*   Distinguish between traditional **DORA metrics** and **AI-specific metrics** (e.g., Prompt Success Rate).
+*   Calculate the **Return on Investment (ROI)** of your AI tools using a concrete, math-free formula.
+*   Identify and avoid "Vanity Metrics" (like Lines of Code) that AI renders obsolete and dangerous.
+*   Navigate the trade-offs between quantitative data and developer morale (Goodhart's Law).
 
 ---
 
@@ -18,6 +18,36 @@ With the right metrics, you can:
 -   Justify investments (e.g., "Why do we need $30/month/dev for this tool?").
 -   Align engineering output with business outcomes.
 -   Continuously improve team performance by spotting where AI fails.
+
+### 📊 Visualizing the Metrics Hierarchy
+
+You cannot measure ROI directly without measuring the foundational layers first.
+
+```mermaid
+graph BT
+    subgraph Level1 ["Level 1: AI Usage (Input)"]
+        A[Prompt Success Rate]
+        B[Agent Utilization]
+    end
+
+    subgraph Level2 ["Level 2: DORA (Throughput)"]
+        C[Lead Time]
+        D[Deployment Freq]
+        E[Change Failure Rate]
+    end
+
+    subgraph Level3 ["Level 3: Business Value (Outcome)"]
+        F[ROI]
+        G[Feature Adoption]
+    end
+
+    Level1 --> Level2
+    Level2 --> Level3
+
+    style Level1 fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+    style Level2 fill:#fff9c4,stroke:#fbc02d,stroke-width:2px
+    style Level3 fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px
+```
 
 ---
 
@@ -37,27 +67,27 @@ You need a balanced scorecard. Don't just measure speed; measure quality and val
 
 ## 3. 🚀 Core Metrics Every Team Should Track
 
-Before measuring AI, ensure you are tracking the fundamentals (DORA metrics):
+Before measuring AI, ensure you are tracking the fundamentals (DORA metrics). AI should move these needles:
 
 ### 🕒 Lead Time for Changes
--   Time from code commit to production.
--   **AI Impact:** Should decrease as AI speeds up coding and testing.
+-   **Definition:** Time from code commit to production.
+-   **AI Impact:** Should **decrease** as AI speeds up coding and testing.
 
 ### 🚀 Deployment Frequency
--   How often you release to production.
--   **AI Impact:** Should increase as AI automates CI/CD pipelines.
+-   **Definition:** How often you release to production.
+-   **AI Impact:** Should **increase** as AI automates CI/CD pipelines.
 
 ### 🐞 Change Failure Rate
--   % of deployments that cause incidents.
--   **AI Impact:** Watch this closely. If AI writes buggy code, this will spike.
+-   **Definition:** % of deployments that cause incidents.
+-   **AI Impact:** Watch this closely. If AI writes buggy code, this will **spike**.
 
 ### 🔧 Mean Time to Recovery (MTTR)
--   Time to fix a production issue.
--   **AI Impact:** Should decrease as AI helps diagnose logs and suggest fixes.
+-   **Definition:** Time to fix a production issue.
+-   **AI Impact:** Should **decrease** as AI helps diagnose logs and suggest fixes.
 
 ### 📈 Feature Adoption Rate
--   % of users engaging with a new feature.
--   Measures real-world impact of dev work, ensuring you aren't just shipping "shelfware" faster.
+-   **Definition:** % of users engaging with a new feature.
+-   **AI Impact:** Measures real-world impact, ensuring you aren't just shipping "shelfware" faster.
 
 ---
 
@@ -81,8 +111,8 @@ You need a formula to justify the cost of AI tools to leadership.
 
 ### 🧮 ROI Formula (Simple)
 
-```
-ROI = ((Value Gained - Cost Incurred) / Cost Incurred) * 100
+```text
+ROI (%) = ((Value Gained - Cost Incurred) / Cost Incurred) * 100
 ```
 
 ### 🧠 Example: AI Agent ROI Calculation
@@ -95,10 +125,10 @@ Let's calculate the ROI for a single developer using a coding assistant.
     *   Time saved: **40 hours/month** (e.g., writing boilerplate, tests, docs)
 
 *   **Calculation:**
-    *   **Value Gained:** 40 hours * $50/hour = **$2,000**
-    *   **Cost Incurred:** **$200**
-    *   **Net Profit:** $2,000 - $200 = **$1,800**
-    *   **ROI:** ($1,800 / $200) * 100 = **900%**
+    1.  **Value Gained:** 40 hours * $50/hour = **$2,000**
+    2.  **Cost Incurred:** **$200**
+    3.  **Net Profit:** $2,000 - $200 = **$1,800**
+    4.  **ROI:** ($1,800 / $200) * 100 = **900%**
 
 *   **Verdict:** The tool pays for itself in 4 hours.
 

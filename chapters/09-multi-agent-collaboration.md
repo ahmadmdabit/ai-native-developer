@@ -4,8 +4,8 @@
 By the end of this chapter, you will be able to:
 *   Define specific roles for a virtual AI development team (e.g., Planner, Coder, Reviewer).
 *   Implement core collaboration patterns: **Sequential Handoff**, **Feedback Loops**, and **Parallel Execution**.
-*   Orchestrate agents using shared context and memory.
-*   Manage the specific risks of multi-agent systems, including infinite loops and excessive token costs.
+*   Orchestrate agents using **Shared State** and memory to prevent context drift.
+*   Manage the specific risks of multi-agent systems, including infinite loops, token cost explosion, and state management complexity.
 
 ---
 
@@ -45,7 +45,37 @@ To build an effective swarm, you need to define clear job descriptions.
 
 ## 4. 🔄 Collaboration Patterns
 
-How do these agents talk to each other? Here are the four standard patterns:
+How do these agents talk to each other? Here are the four standard patterns.
+
+### 📊 Visualizing Agent Workflows
+
+```mermaid
+graph TD
+    subgraph Sequential ["1. Sequential Handoff"]
+        A[Planner] --> B[Coder]
+        B --> C[Tester]
+        C --> D[DevOps]
+    end
+
+    subgraph Feedback ["2. Feedback Loop"]
+        E[Coder] --> F{Reviewer}
+        F -- "❌ Reject (Fixes)" --> E
+        F -- "✅ Approve" --> G[Merge]
+    end
+
+    subgraph Parallel ["3. Parallel Execution"]
+        H[Manager] --> I[Frontend Agent]
+        H --> J[Backend Agent]
+        I --> K[Merger]
+        J --> K
+    end
+
+    style Sequential fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+    style Feedback fill:#fff9c4,stroke:#fbc02d,stroke-width:2px
+    style Parallel fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px
+```
+
+### The Patterns in Detail
 
 ### 🧬 1. Sequential Handoff (The Assembly Line)
 Each agent passes its output to the next as input.
@@ -95,10 +125,10 @@ Multi-agent systems are powerful, but they are significantly harder to manage th
     *   *Mitigation:* Implement a "Maximum Iteration Count" (e.g., max 5 retries) before escalating to a human.
 2.  **Token Cost Explosion:**
     *   *Risk:* Agents talking to agents generates massive amounts of text. A simple task can cost 10x more than a single prompt.
-    *   *Mitigation:* Use cheaper/faster models (e.g., GPT-3.5, Haiku) for simple sub-tasks and reserve powerful models (GPT-4, Opus) for the Architect/Reviewer roles.
-3.  **Context Pollution:**
-    *   *Risk:* As agents pass messages, the context window fills up with conversational noise, confusing the next agent.
-    *   *Mitigation:* Use a "Summarizer Agent" to condense the conversation history before passing it to the next stage.
+    *   *Mitigation:* Use cheaper/faster models (e.g., GPT-4o-mini, Haiku) for simple sub-tasks and reserve powerful models (GPT-4o, Opus) for the Architect/Reviewer roles.
+3.  **State Management & Context Pollution:**
+    *   *Risk:* As agents pass messages, the context window fills up with conversational noise. Agents may lose track of the original file state.
+    *   *Mitigation:* Use a **Shared State** architecture (e.g., a Redis instance or a JSON file) where agents read/write the current code, rather than passing code blocks back and forth in chat history.
 4.  **Debugging Difficulty:**
     *   *Risk:* When the output is wrong, it's hard to know *which* agent failed in the chain.
     *   *Mitigation:* Log every step of the chain separately (Traceability).
@@ -120,7 +150,7 @@ Multi-agent systems are powerful, but they are significantly harder to manage th
 ## 8. 🛡️ Best Practices
 
 -   **Define clear roles**: Avoid overlap. A Coder shouldn't try to redesign the architecture; it should follow the Architect's spec.
--   **Use shared memory**: Let agents access a common context (e.g., a file or vector DB) rather than passing everything in chat history.
+-   **Use shared memory**: Let agents access a common context (e.g., a file system or vector DB) rather than passing everything in chat history.
 -   **Log everything**: Track prompts, outputs, and decisions for auditability.
 -   **Set boundaries**: Prevent agents from making irreversible changes (like deleting DBs) without human approval.
 -   **Human-in-the-loop**: Always keep a human reviewer at the end of the chain for critical decisions.
@@ -141,6 +171,7 @@ Multi-agent systems are powerful, but they are significantly harder to manage th
 **Key Takeaways:**
 *   Multi-agent systems allow for **Specialization** and **Self-Correction**.
 *   Use patterns like **Sequential Handoff** for simple tasks and **Feedback Loops** for quality.
+*   **State Management** is critical; agents need a shared "source of truth" (memory) to avoid confusion.
 *   Beware of **Infinite Loops** and **Token Costs**—orchestration requires guardrails.
 
 **Coming Up Next:**

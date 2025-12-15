@@ -4,7 +4,7 @@
 By the end of this chapter, you will be able to:
 *   Distinguish between *Prompt Engineering* (instructions) and *Context Engineering* (information retrieval).
 *   Apply techniques like **Chunking** and **Metadata Injection** to improve AI relevance.
-*   Implement specific context patterns for debugging and code extension.
+*   Implement specific context patterns, including **Context-Aware Error Handling**, to debug complex issues.
 *   Manage the trade-offs between context depth, token cost, and the "Lost in the Middle" phenomenon.
 
 ---
@@ -14,6 +14,31 @@ By the end of this chapter, you will be able to:
 Context engineering is the deliberate design of **what information you feed into an AI system** (code snippets, documentation, requirements, constraints, history) so that its outputs are **relevant, accurate, and aligned with your goals**.
 
 While Prompt Engineering is about *how you ask*, Context Engineering is about *what the AI knows* when it answers. Think of it as **setting the stage**: the better the context, the smarter the AI teammate.
+
+### 📊 Visualizing Context Injection (RAG)
+
+Most advanced AI workflows use a pattern called **Retrieval Augmented Generation (RAG)**. Instead of pasting your whole codebase into a chat window, you dynamically fetch only what is needed.
+
+```mermaid
+graph LR
+    User[User Query] --> Retriever{Context Retriever}
+    
+    subgraph KnowledgeBase ["Project Knowledge"]
+        Code[Codebase]
+        Docs[Documentation]
+        Logs[Error Logs]
+    end
+    
+    Retriever -- "Fetch Relevant Chunks" --> KnowledgeBase
+    KnowledgeBase -- "Snippets" --> ContextWindow[Context Window]
+    
+    User --> ContextWindow
+    ContextWindow --> LLM[AI Model]
+    LLM --> Output[Tailored Response]
+
+    style ContextWindow fill:#fff9c4,stroke:#fbc02d,stroke-width:2px
+    style LLM fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+```
 
 ---
 
@@ -53,9 +78,9 @@ While Prompt Engineering is about *how you ask*, Context Engineering is about *w
 ## 5. 🚀 Practical Patterns
 
 -   **Code Extension**: Provide existing code + ask for modifications.
-    *   *Context:* The file to be modified + related utility functions.
+    *   *Context:* The file to be modified + related utility functions + types definitions.
 -   **Context-Aware Error Handling**: Provide logs + source code.
-    *   *Context:* The stack trace, the specific file where the error occurred, and recent git diffs.
+    *   *Context:* The raw stack trace, the specific file where the error occurred, and **recent git diffs** to see what changed recently. This allows the AI to correlate the error with recent code changes.
 -   **Testing**: Provide function + ask for edge-case unit tests.
     *   *Context:* The function logic + the testing framework documentation (e.g., Jest config).
 -   **Documentation**: Provide API spec + ask for Markdown docs.
@@ -70,7 +95,7 @@ While Prompt Engineering is about *how you ask*, Context Engineering is about *w
 More context is not always better. You must balance information density against model limitations:
 
 1.  **The "Lost in the Middle" Phenomenon:** LLMs are great at remembering the beginning and end of a prompt, but often forget details buried in the middle of a large context window.
-    *   *Mitigation:* Put the most critical instructions at the very end of the prompt.
+    *   *Mitigation:* Put the most critical instructions (constraints) at the very end of the prompt.
 2.  **Token Costs & Latency:** Stuffing thousands of lines of code into context increases API costs and slows down response times significantly.
     *   *Mitigation:* Use "Retrieval Augmented Generation" (RAG) to fetch only relevant snippets.
 3.  **Data Leakage:** Adding "all environment variables" or "full config files" to context can accidentally expose API keys or PII to the model provider.

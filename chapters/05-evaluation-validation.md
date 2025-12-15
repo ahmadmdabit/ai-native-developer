@@ -2,10 +2,10 @@
 
 ### 🎯 Learning Objectives
 By the end of this chapter, you will be able to:
-*   Define **Evaluation Engineering** as a distinct discipline from standard QA.
-*   Implement specific validation techniques like **Mutation Testing** and **Differential Testing** for AI outputs.
-*   Establish key metrics (e.g., Pass Rate, Prompt Success Rate) to measure AI performance.
-*   Navigate the trade-offs between validation rigor, pipeline latency, and cost.
+*   Define **Evaluation Engineering** as a distinct discipline from standard QA, focusing on probabilistic AI outputs.
+*   Implement specific validation techniques like **Mutation Testing** and **Differential Testing** to catch subtle AI bugs.
+*   Establish key metrics (e.g., Pass Rate, Prompt Success Rate) to measure the reliability of your agents.
+*   Navigate the trade-offs between validation rigor, pipeline latency, and the cost of "LLM-as-a-Judge."
 
 ---
 
@@ -22,6 +22,31 @@ It focuses on four pillars:
 -   📚 **Compliance** — Does it follow team conventions and legal/licensing rules?
 
 This is the **quality gate** between AI output and production.
+
+### 📊 Visualizing the Validation Pipeline
+
+You cannot rely on manual review alone. You need a tiered defense system that filters out bad code before it reaches a human.
+
+```mermaid
+graph TD
+    A[AI Agent Output] --> B{Layer 1: Static Analysis}
+    B -- "Syntax/Lint Error" --> C[Auto-Fix Loop]
+    C --> A
+    B -- "Pass" --> D{Layer 2: Dynamic Testing}
+    
+    D -- "Test Failure" --> C
+    D -- "Pass" --> E{Layer 3: Security Scan}
+    
+    E -- "Vulnerability" --> C
+    E -- "Pass" --> F[Human Review]
+    
+    F -- "Approve" --> G[Merge to Main]
+    F -- "Reject" --> H[Update Prompt Library]
+
+    style A fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+    style F fill:#fff9c4,stroke:#fbc02d,stroke-width:2px
+    style G fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px
+```
 
 ---
 

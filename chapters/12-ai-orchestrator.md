@@ -2,10 +2,10 @@
 
 ### 🎯 Learning Objectives
 By the end of this chapter, you will be able to:
-*   Define the **AI Orchestrator** role and how it differs from a traditional "Coder."
+*   Define the **AI Orchestrator** role and how it differs fundamentally from a traditional "Coder."
 *   Identify the five critical skills required for this transition (e.g., Evaluation Engineering, Context Management).
 *   Structure an **AI-Native Team** where humans and agents have distinct, complementary roles.
-*   Navigate the career trade-offs, including the risk of **Skill Atrophy** and the shift in cognitive load.
+*   Navigate the career trade-offs, including the risk of **Skill Atrophy** and the psychological shift of "not writing the code."
 
 ---
 
@@ -14,6 +14,27 @@ By the end of this chapter, you will be able to:
 The role of the software developer is transforming. In the past, developers were expected to write every line of code, debug every issue, and manually manage every deployment. But in the AI era, the most effective developers are no longer just builders—they are **orchestrators of intelligence**.
 
 AI agents are now capable of generating code, writing tests, suggesting architectures, and even deploying applications. This doesn’t eliminate the need for developers—it **elevates their role**. Instead of focusing solely on implementation details (syntax), developers now focus on system design and intent.
+
+### 📊 Visualizing the Role Evolution
+
+The developer's time allocation is flipping. We are moving from "doing the work" to "managing the work."
+
+```mermaid
+graph TD
+    subgraph Traditional ["The Coder (2010-2022)"]
+        A[Syntax & Logic] -->|80% Time| B(Output)
+        C[Architecture] -->|20% Time| B
+    end
+
+    subgraph AINative ["The Orchestrator (2025+)"]
+        D[Architecture & Intent] -->|50% Time| E(AI Agents)
+        F[Validation & Review] -->|40% Time| E
+        G[Manual Coding] -->|10% Time| E
+    end
+
+    style Traditional fill:#f9f9f9,stroke:#333,stroke-width:2px
+    style AINative fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+```
 
 **The New Workflow:**
 1.  **Design intelligent workflows** that integrate AI agents into the dev lifecycle.
@@ -60,10 +81,10 @@ Transitioning to an Orchestrator comes with psychological and professional risks
 
 1.  **Skill Atrophy (The "Muscle Memory" Loss):**
     *   *Risk:* If you never write a `for` loop again, you might forget how it works. When the AI fails (and it will), you may lack the low-level skills to fix it.
-    *   *Mitigation:* Practice "manual coding" days. Read the AI's code line-by-line to maintain comprehension.
+    *   *Mitigation:* Practice "manual coding" days. Read the AI's code line-by-line to maintain comprehension. Never automate what you don't understand.
 2.  **Impostor Syndrome:**
     *   *Risk:* Developers often feel guilty or fraudulent when they ship code they didn't type. "Did I really build this?"
-    *   *Mitigation:* Shift your value metric from "Lines of Code Written" to "Problems Solved" and "Systems Designed."
+    *   *Mitigation:* Shift your value metric from "Lines of Code Written" to "Problems Solved" and "Systems Designed." You are paid for the outcome, not the typing.
 3.  **Accountability Gap:**
     *   *Risk:* It's easy to blame the AI for a bug. "Copilot wrote it, not me."
     *   *Mitigation:* Adopt the mindset: **"The AI is the junior dev; I am the senior. I am responsible for every line merged."**

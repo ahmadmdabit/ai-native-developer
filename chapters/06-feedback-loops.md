@@ -15,6 +15,29 @@ They’re the **engine of continuous improvement** in software development. Iter
 
 Without feedback loops, you’re just guessing. With them, you’re evolving. In an AI-native context, a feedback loop turns a static prompt into a dynamic system that gets smarter with every execution.
 
+### 📊 Visualizing the Feedback Engine
+
+A feedback loop isn't just a circle; it's a spiral of improvement.
+
+```mermaid
+graph TD
+    A[Prompt] --> B[AI Generation]
+    B --> C{Evaluation Gate}
+    
+    C -- "Pass" --> D[Deploy / Merge]
+    D --> E[Production Telemetry]
+    E --> F[Data Store]
+    
+    C -- "Fail" --> G[Error Analysis]
+    G --> F
+    
+    F -- "Insights" --> H[Refine Prompt]
+    H --> A
+
+    style C fill:#fff9c4,stroke:#fbc02d,stroke-width:2px
+    style H fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+```
+
 ---
 
 ## 2. 🧩 Where Feedback Loops Fit in the Dev Lifecycle

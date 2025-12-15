@@ -5,13 +5,44 @@ By the end of this chapter, you will be able to:
 *   Identify the six essential layers of an **AI-Ready Stack** (from Prompting to Governance).
 *   Create and manage reusable **Templates** for prompts and context to standardize team output.
 *   Implement **PromptOps** disciplines to treat AI logic with the same rigor as application code.
-*   Navigate the trade-offs between building custom orchestration layers vs. buying off-the-shelf platforms.
+*   Navigate the trade-offs between building custom orchestration layers vs. buying off-the-shelf platforms ("The Stack Tax").
 
 ---
 
 ## 1. 🧰 Core Components of an AI-Ready Stack
 
 To thrive in the AI-augmented era of software development, you need more than just powerful models—you need a **well-structured, AI-ready stack**. This isn't just about buying tools; it's about integrating them into a cohesive platform.
+
+### 📊 Visualizing the Stack Layers
+
+Your stack is not a flat list of tools; it is a hierarchy of dependencies. Governance sits on top, while models sit at the bottom.
+
+```mermaid
+graph BT
+    subgraph Infrastructure ["Layer 1: Infrastructure"]
+        A[LLM Models (OpenAI, Anthropic, Local)]
+        B[Vector Database (Context)]
+    end
+
+    subgraph Logic ["Layer 2: Orchestration Logic"]
+        C[Prompt Management]
+        D[Agent Framework (LangChain/CrewAI)]
+    end
+
+    subgraph Quality ["Layer 3: Quality & Control"]
+        E[Evaluation Pipeline]
+        F[Governance & Guardrails]
+    end
+
+    Infrastructure --> Logic
+    Logic --> Quality
+
+    style Infrastructure fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+    style Logic fill:#fff9c4,stroke:#fbc02d,stroke-width:2px
+    style Quality fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px
+```
+
+### The Layers Defined
 
 | Layer | Purpose | Examples |
 | :--- | :--- | :--- |
@@ -87,7 +118,7 @@ Building an AI stack is an investment. Be aware of the costs:
     *   *Mitigation:* Use abstraction layers (like LangChain) to keep your logic model-agnostic.
 2.  **Maintenance Overhead:**
     *   *Risk:* Maintaining a custom "Agent Orchestrator" is complex software engineering. It can become a distraction from your core product.
-    *   *Mitigation:* Buy vs. Build. Prefer managed services for orchestration unless you have unique, deep requirements.
+    *   *Mitigation:* **Buy vs. Build.** Prefer managed services for orchestration unless you have unique, deep requirements.
 3.  **Tool Fatigue:**
     *   *Risk:* Introducing five new AI tools can overwhelm developers.
     *   *Mitigation:* Integrate AI capabilities into *existing* tools (IDE, Slack, GitHub) rather than forcing devs into new dashboards.

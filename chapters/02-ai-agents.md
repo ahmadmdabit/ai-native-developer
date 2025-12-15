@@ -5,7 +5,7 @@ By the end of this chapter, you will be able to:
 *   Identify specific entry points for AI agents across the entire software development lifecycle (SDLC).
 *   Define distinct roles for AI agents (e.g., Coder, Tester, Analyst) to treat them as specialized teammates.
 *   Integrate agents into your existing workflows (IDE, CI/CD, ChatOps).
-*   Recognize the specific trade-offs and risks associated with agent autonomy.
+*   Recognize the specific trade-offs and risks associated with agent autonomy, such as hallucination and the "LGTM" syndrome.
 
 ---
 
@@ -89,13 +89,39 @@ While AI agents increase velocity, they introduce specific risks that must be ma
 
 ---
 
-## 6. 🧩 Example Workflow
+## 6. 🧩 Example Workflow: The Agent Relay
 
-Imagine you’re building a **React app**. Here is how the roles collaborate:
+Imagine you’re building a **React app**. Instead of doing it all yourself, you orchestrate a relay race between specialized agents.
 
-1.  **Requirements**: The **Project Analyst** agent converts “I want a todo list app” → a backlog of user stories.
+### Visualizing the Handoff
+
+```mermaid
+sequenceDiagram
+    participant Human as 👤 Orchestrator
+    participant Analyst as 📋 Analyst Agent
+    participant Architect as 🏗️ Architect Agent
+    participant Coder as 💻 Coder Agent
+    participant Tester as 🧪 Tester Agent
+    participant DevOps as 🚀 DevOps Agent
+
+    Human->>Analyst: "I want a todo list app"
+    Analyst->>Architect: User Stories & Requirements
+    Architect->>Coder: Component Hierarchy & Wireframes
+    Coder->>Tester: React Components & Hooks
+    Tester->>Coder: Test Results (Pass/Fail)
+    loop Refinement
+        Coder->>Tester: Fixes
+        Tester-->>Coder: Verified
+    end
+    Tester->>DevOps: Verified Codebase
+    DevOps->>Human: CI/CD Pipeline & Deployment URL
+```
+
+### The Steps in Detail
+
+1.  **Requirements**: The **Project Analyst** agent converts the vague prompt into a backlog of user stories.
 2.  **Design**: The **Architect** agent generates wireframes and suggests a component hierarchy.
-3.  **Coding**: The **Code Assistant** autocompletes React hooks and generates API calls.
+3.  **Coding**: The **Code Assistant** autocompletes React hooks and generates API calls based on the design.
 4.  **Testing**: The **Test Engineer** creates Jest unit tests for each component immediately after generation.
 5.  **Deployment**: The **DevOps Agent** suggests a GitHub Actions workflow for CI/CD.
 6.  **Maintenance**: A **Support Agent** summarizes bug reports and proposes fixes.
@@ -114,7 +140,7 @@ Imagine you’re building a **React app**. Here is how the roles collaborate:
 
 **Key Takeaways:**
 *   AI agents are not just code generators; they fit into planning, testing, and ops.
-*   Assigning specific roles (e.g., "Test Engineer") improves agent performance.
+*   Assigning specific roles (e.g., "Test Engineer") improves agent performance by narrowing context.
 *   You must balance the speed of autonomy with the risks of hallucination and security flaws.
 
 **Coming Up Next:**

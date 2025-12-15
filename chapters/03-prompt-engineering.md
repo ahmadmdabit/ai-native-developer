@@ -13,7 +13,35 @@ By the end of this chapter, you will be able to:
 
 Prompt engineering is the art of **designing inputs** to get the most useful outputs from AI. In software development, it’s not just about asking for code—it’s about **guiding the AI** to act like a teammate who understands context, constraints, and goals.
 
-A vague prompt yields generic, often buggy code. A structured, engineered prompt yields production-ready logic.
+A vague prompt yields generic, often buggy code. A structured, engineered prompt yields production-ready logic. Think of the prompt as the **function signature** for the AI's intelligence.
+
+### 📊 Visualizing the Anatomy of a Perfect Prompt
+
+To get consistent results, structure your prompts like a well-formed API request.
+
+```mermaid
+graph TD
+    P[The Perfect Prompt]
+    
+    P --> R[Role / Persona]
+    P --> C[Context]
+    P --> I[Instruction]
+    P --> N[Constraints]
+    P --> O[Output Format]
+
+    R --> R1["'Act as a Senior React Engineer'"]
+    C --> C1["'Using Next.js 14 App Router'"]
+    I --> I1["'Create a user profile card component'"]
+    N --> N1["'No external CSS libraries, use Tailwind'"]
+    O --> O1["'Return only the TSX code'"]
+
+    style P fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+    style R fill:#fff9c4,stroke:#fbc02d
+    style C fill:#fff9c4,stroke:#fbc02d
+    style I fill:#fff9c4,stroke:#fbc02d
+    style N fill:#fff9c4,stroke:#fbc02d
+    style O fill:#fff9c4,stroke:#fbc02d
+```
 
 ---
 

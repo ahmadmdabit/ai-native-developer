@@ -17,6 +17,27 @@ We are entering the era of **AI-native development**—a world where intelligent
 
 This book was not just about using Copilot; it was about restructuring your entire engineering practice to leverage this amplification safely and effectively.
 
+### 📊 Visualizing the AI-Native Flywheel
+
+The concepts in this book are not isolated steps; they form a self-reinforcing loop. Better knowledge leads to better prompts, which lead to better agents, which generate data to improve knowledge.
+
+```mermaid
+graph TD
+    A[Knowledge Management] -->|Context| B(Prompt Engineering)
+    B -->|Instructions| C(AI Agents)
+    C -->|Output| D{Evaluation & Validation}
+    D -- "Pass" --> E[Deployment]
+    D -- "Fail" --> F[Feedback Loop]
+    F -->|Learnings| A
+    E -->|Telemetry| A
+
+    style A fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+    style B fill:#fff9c4,stroke:#fbc02d,stroke-width:2px
+    style C fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+    style D fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px
+    style F fill:#f8bbd0,stroke:#c2185b,stroke-width:2px
+```
+
 ---
 
 ## 2. 📚 What We've Learned

@@ -15,6 +15,25 @@ Knowledge Management (KM) in software development is the **systematic process of
 
 In an AI-native world, KM takes on a new role: it is the **training data** for your internal agents. It’s not just about storing information — it’s about **making it accessible, actionable, and alive**.
 
+### 📊 Visualizing the Knowledge Lifecycle
+
+Knowledge is not a static artifact; it is a living cycle. If the cycle breaks, the knowledge dies (rots).
+
+```mermaid
+graph TD
+    A[Capture] -->|Raw Info| B(Curate)
+    B -->|Structured Data| C(Distribute)
+    C -->|Usage & Feedback| D{Evolve}
+    D -- "Update" --> B
+    D -- "Archive" --> E[Trash]
+    D -- "New Insights" --> A
+
+    style A fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+    style B fill:#fff9c4,stroke:#fbc02d,stroke-width:2px
+    style C fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px
+    style D fill:#f8bbd0,stroke:#c2185b,stroke-width:2px
+```
+
 ---
 
 ## 2. 🧩 What Counts as “Knowledge” in Dev Work?
@@ -41,9 +60,7 @@ In an AI-native world, KM takes on a new role: it is the **training data** for y
 
 ---
 
-## 4. 🔄 The Knowledge Lifecycle
-
-Knowledge is not static; it flows through a lifecycle.
+## 4. 🔄 The Knowledge Lifecycle Steps
 
 ### 1. Capture
 -   Write down decisions, patterns, and lessons learned immediately.
